@@ -25,13 +25,13 @@ requirements:
     - setuptools >=42.0
     - setuptools_scm >=3.4
     - wheel
+    - toml
   run:
     - python
     - attrs >=19.2.0
     - iniconfig
-    - more-itertools >=4.0.0
     - packaging
-    - pluggy >=0.12,<1.0.0a1
+    - pluggy >=0.12,<2.0
     - py >=1.8.2
     - toml
     - atomicwrites >=1.0  # [win]
@@ -45,6 +45,7 @@ requirements:
 test:
   commands:
     - pytest -h
+    - pip check
   imports:
     - pytest
     - _pytest
@@ -53,6 +54,9 @@ test:
     - _pytest.assertion
     - _pytest.config
     - _pytest.mark
+  requires:
+    - pip
+    - python <3.10
 
 about:
   home: https://docs.pytest.org/en/latest/
