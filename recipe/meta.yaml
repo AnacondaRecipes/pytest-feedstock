@@ -53,7 +53,6 @@ test:
     - astropy
     - jupyter_core
     - pandas
-    - tqdm
 
 about:
   home: https://docs.pytest.org/en/latest/
