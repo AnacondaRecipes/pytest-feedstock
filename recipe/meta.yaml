@@ -9,21 +9,19 @@ source:
   sha256: 841132caef6b1ad17a9afde46dc4f6cfa59a05f9555aae5151f73bdf2820ca63
 
 build:
-  skip: true  # [py<36]
-  number: 2
+  skip: true  # [py<37]
+  number: 0
   script: {{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - py.test = py.test:console_main
     - pytest = py.test:console_main
 
 requirements:
-  build:
-    - python                                 # [build_platform != target_platform]
   host:
     - pip
     - python
     - setuptools >=42.0
-    - setuptools_scm >=3.4
+    - setuptools_scm >=6.2.3
     - wheel
     - toml
   run:
@@ -33,7 +31,7 @@ requirements:
     - packaging
     - pluggy >=0.12,<2.0
     - py >=1.8.2
-    - toml
+    - tomli >=1.0.0
     - atomicwrites >=1.0  # [win]
     - colorama  # [win]
     - importlib-metadata >=0.12  # [py<38]
@@ -48,15 +46,8 @@ test:
     - pip check
   imports:
     - pytest
-    - _pytest
-    - _pytest._code
-    - _pytest._io
-    - _pytest.assertion
-    - _pytest.config
-    - _pytest.mark
   requires:
     - pip
-    - python <3.10
 
 about:
   home: https://docs.pytest.org/en/latest/
