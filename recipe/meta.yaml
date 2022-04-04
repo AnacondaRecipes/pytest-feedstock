@@ -48,11 +48,6 @@ test:
     - pytest
   requires:
     - pip
-  # 2022/4/4: Make additional downstream testings for the major version bump of pytest to v7.1.1
-  downstreams:
-    - astropy
-    - jupyter_core
-    - pandas
 
 about:
   home: https://docs.pytest.org/en/latest/
