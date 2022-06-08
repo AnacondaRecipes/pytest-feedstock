@@ -49,6 +49,16 @@ test:
   commands:
     - pytest -h
     - pip check
+  downstreams:  # [not win]
+    - conda  # [not win]
+    - ipython  # [not win]
+    - jupyter_client  # [not win]
+    - pytest-timeout  # [not win]
+    - pytest-runner  # [not win]
+    - pyzmq  # [not win]
+    - pandas  # [not win]
+    - pytest-cov  # [not win]
+    - pytest-html  # [not win]
 
 about:
   home: https://docs.pytest.org/en/latest/
