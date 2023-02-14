@@ -10,20 +10,18 @@ source:
 
 build:
   skip: true  # [py<36]
-  number: 2
+  number: 3
   script: {{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt
   entry_points:
     - py.test = py.test:console_main
     - pytest = py.test:console_main
 
 requirements:
-  build:
-    - python                                 # [build_platform != target_platform]
   host:
     - pip
     - python
-    - setuptools >=42.0
-    - setuptools_scm >=3.4
+    - setuptools
+    - setuptools_scm
     - wheel
     - toml
   run:
@@ -56,7 +54,6 @@ test:
     - _pytest.mark
   requires:
     - pip
-    - python <3.10
 
 about:
   home: https://docs.pytest.org/en/latest/
