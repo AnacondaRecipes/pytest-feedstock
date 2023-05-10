@@ -1,5 +1,5 @@
 {% set name = "pytest" %}
-{% set version = "7.1.2" %}
+{% set version = "7.3.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pytest-{{ version }}.tar.gz
-  sha256: a06a0425453864a270bc45e71f783330a7428defb4230fb5e6a731fde06ecd45
+  sha256: 434afafd78b1d78ed0addf160ad2b77a30d35d4bdf8af234fe621919d9ed15e3
 
 build:
   skip: true  # [py<37]
   number: 0
-  script: {{ PYTHON }} setup.py install --single-version-externally-managed --record record.txt
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation
   entry_points:
     - pytest=pytest:console_main
     - py.test=pytest:console_main
@@ -36,6 +36,7 @@ requirements:
     - atomicwrites >=1.0  # [win]
     - colorama  # [win]
     - importlib-metadata >=0.12  # [py<38]
+    - exceptiongroup
   run_constrained:
     # pytest-faulthandler 2 is a dummy package.
     # if an older version of fault-handler is installed, it will conflict with pytest >=5.
@@ -63,6 +64,10 @@ about:
   dev_url: https://github.com/pytest-dev/pytest/
 
 extra:
+  skip-lints:
+    # Without `packaging`, pytest errors out with:
+    #   pytest <version> requires packaging, which is not installed.
+    - python_build_tool_in_run
   recipe-maintainers:
     - flub
     - goanpeca
