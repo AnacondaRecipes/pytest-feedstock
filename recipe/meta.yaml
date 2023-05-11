@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pytest-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 434afafd78b1d78ed0addf160ad2b77a30d35d4bdf8af234fe621919d9ed15e3
 
 build:
@@ -21,22 +21,20 @@ requirements:
   host:
     - pip
     - python
-    - setuptools >=45.0
-    - setuptools_scm >=6.2.3
+    - setuptools
+    - setuptools_scm
     - wheel
-    - toml
+    - toml 0.10.2
   run:
     - python
     - attrs >=19.2.0
     - iniconfig
     - packaging
     - pluggy >=0.12,<2.0
-    - py >=1.8.2
     - tomli >=1.0.0
-    - atomicwrites >=1.0  # [win]
     - colorama  # [win]
     - importlib-metadata >=0.12  # [py<38]
-    - exceptiongroup
+    - exceptiongroup  >=1.0.0  # [py<311]
   run_constrained:
     # pytest-faulthandler 2 is a dummy package.
     # if an older version of fault-handler is installed, it will conflict with pytest >=5.
@@ -47,6 +45,7 @@ test:
     - pytest
   requires:
     - pip
+    - attrs >=19.2.0
   commands:
     - pytest -h
     - pip check
