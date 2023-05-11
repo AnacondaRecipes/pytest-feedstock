@@ -12,7 +12,7 @@ source:
 build:
   skip: true  # [py<37]
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - pytest=pytest:console_main
     - py.test=pytest:console_main
