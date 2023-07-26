@@ -24,7 +24,6 @@ requirements:
     - setuptools
     - setuptools_scm >=6.0
     - wheel
-    - toml 0.10.2
   run:
     - python
     - iniconfig
