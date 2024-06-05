@@ -70,10 +70,6 @@ about:
   dev_url: https://github.com/pytest-dev/pytest/
 
 extra:
-  skip-lints:
-    # Without `packaging`, pytest errors out with:
-    #   pytest <version> requires packaging, which is not installed.
-    - python_build_tool_in_run
   recipe-maintainers:
     - flub
     - goanpeca
