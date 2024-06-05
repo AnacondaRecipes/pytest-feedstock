@@ -43,16 +43,16 @@ test:
     - pytest
   requires:
     - pip
-    # For full testing:
-    #- argcomplete
-    #- attrs >=19.2.0
-    #- hypothesis >=3.56
-    #- mock
-    #- nose
-    #- pygments >2.7.2
-    #- requests
-    #- setuptools
-    #- xmlschema
+    - argcomplete
+    - attrs >=19.2.0
+    - hypothesis >=3.56
+    - mock
+    - nose
+    - pygments >2.7.2
+    - requests
+    - setuptools
+    # xmlschema does not exist on defaults yet
+    # - xmlschema
   commands:
     - pytest -h
     - pip check
