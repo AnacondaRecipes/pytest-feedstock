@@ -1,5 +1,5 @@
 {% set name = "pytest" %}
-{% set version = "7.4.0" %}
+{% set version = "7.4.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b4bf8c45bd59934ed84001ad51e11b4ee40d40a1229d2c79f9c592b0a3f6bd8a
+  sha256: 2cf0005922c6ace4a3e2ec8b4080eb0d9753fdc93107415332f50ce9e7994280
 
 build:
   skip: true  # [py<37]
@@ -22,7 +22,7 @@ requirements:
     - pip
     - python
     - setuptools
-    - setuptools_scm >=6.0
+    - setuptools_scm >=6.2.3
     - wheel
   run:
     - python
@@ -39,23 +39,25 @@ requirements:
     - pytest-faulthandler >=2
 
 test:
+  source_files:
+    - testing
+    - src
   imports:
     - pytest
+    - _pytest
+    - _pytest._code
+    - _pytest._io
+    - _pytest._py
+    - _pytest.assertion
+    - _pytest.config
+    - _pytest.mark
   requires:
     - pip
-    # For full testing:
-    #- argcomplete
-    #- attrs >=19.2.0
-    #- hypothesis >=3.56
-    #- mock
-    #- nose
-    #- pygments >2.7.2
-    #- requests
-    #- setuptools
-    #- xmlschema
+    - pytest
   commands:
     - pytest -h
     - pip check
+    - pytest testing -v --markers --fixtures --ignore=testing/example_scripts
 
 about:
   home: https://docs.pytest.org/en/latest/
@@ -70,10 +72,6 @@ about:
   dev_url: https://github.com/pytest-dev/pytest/
 
 extra:
-  skip-lints:
-    # Without `packaging`, pytest errors out with:
-    #   pytest <version> requires packaging, which is not installed.
-    - python_build_tool_in_run
   recipe-maintainers:
     - flub
     - goanpeca
