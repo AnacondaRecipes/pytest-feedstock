@@ -39,23 +39,25 @@ requirements:
     - pytest-faulthandler >=2
 
 test:
+  source_files:
+    - testing
+    - src
   imports:
     - pytest
+    - _pytest
+    - _pytest._code
+    - _pytest._io
+    - _pytest._py
+    - _pytest.assertion
+    - _pytest.config
+    - _pytest.mark
   requires:
     - pip
-    - argcomplete
-    - attrs >=19.2.0
-    - hypothesis >=3.56
-    - mock
-    - nose
-    - pygments >2.7.2
-    - requests
-    - setuptools
-    # xmlschema does not exist on defaults yet
-    # - xmlschema
+    - pytest
   commands:
     - pytest -h
     - pip check
+    - pytest testing -v --markers --fixtures --ignore=testing/example_scripts
 
 about:
   home: https://docs.pytest.org/en/latest/
