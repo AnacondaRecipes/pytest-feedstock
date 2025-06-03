@@ -1,16 +1,16 @@
 {% set name = "pytest" %}
-{% set version = "8.3.4" %}
+{% set version = "8.4.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 965370d062bce11e73868e0335abac31b4d3de0e82f4007408d242b4f8610761
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 14d920b48472ea0dbf68e45b96cd1ffda4705f33307dcc86c676c1b5104838a6
 
 build:
-  skip: true  # [py<38]
+  skip: true  # [py<39]
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
@@ -22,16 +22,16 @@ requirements:
     - pip
     - python
     - setuptools >=61
-    - wheel
     - setuptools-scm >=6.2.3
   run:
     - python
-    - iniconfig
-    - packaging
-    - pluggy <2,>=1.5
-    - colorama # [win]
-    - exceptiongroup >=1.0.0 # [py<311]
-    - tomli >=1 # [py<311]
+    - iniconfig >=1
+    - packaging >=20
+    - pluggy >=1.5,<2
+    - colorama >=0.4  # [win]
+    - exceptiongroup >=1  # [py<311]
+    - tomli >=1  # [py<311]
+    - pygments >=2.7.2
   run_constrained:
     # pytest-faulthandler 2 is a dummy package.
     # if an older version of fault-handler is installed, it will conflict with pytest >=5.
