@@ -1,5 +1,5 @@
 {% set name = "pytest" %}
-{% set version = "8.4.2" %}
+{% set version = "9.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 86c0d0b93306b961d58d62a4db4879f27fe25513d4b969df351abdddb3c30e01
+  sha256: 8f44522eafe4137b0f35c9ce3072931a788a21ee40a2ed279e817d3cc16ed21e
 
 build:
-  skip: true  # [py<39]
+  skip: true  # [py<310]
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
@@ -23,14 +23,13 @@ requirements:
   host:
     - pip
     - python
-    - setuptools >=61
-    - wheel
+    - setuptools >=77
     - setuptools-scm >=6.2.3
     - toml
   run:
     - python
-    - iniconfig >=1
-    - packaging >=20
+    - iniconfig >=1.0.1
+    - packaging >=22
     - pluggy >=1.5,<2
     - colorama >=0.4  # [win]
     - exceptiongroup >=1  # [py<311]
