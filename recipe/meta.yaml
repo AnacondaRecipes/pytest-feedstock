@@ -16,8 +16,6 @@ build:
   entry_points:
     - pytest=pytest:console_main
     - py.test=pytest:console_main
-  script_env:
-    - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
 
 requirements:
   host:
@@ -43,6 +41,63 @@ requirements:
     - hypothesis >=3.56
 
 test:
+  downstreams:
+    # - allure-pytest
+    # - allure-pytest-bdd
+    # - inline-snapshot
+    # - pytest-flake8
+    # - pytest-selenium
+    # - pytest-subtests
+    # - pytest-sugar
+    # - pytest-xdist
+
+    - medspacy_quickumls
+    - nbsmoke
+    - pytest-arraydiff
+    - pytest-astropy
+    - pytest-astropy-header
+    - pytest-asyncio
+    - pytest-azurepipelines
+    - pytest-base-url
+    - pytest-bdd
+    - pytest-benchmark
+    - pytest-cache
+    - pytest-codspeed
+    - pytest-console-scripts
+    - pytest-cov
+    - pytest-csv
+    - pytest-dependency
+    - pytest-docker-tools
+    - pytest-doctestplus
+    - pytest-filter-subpackage
+    - pytest-flakefinder
+    - pytest-forked
+    - pytest-grpc
+    - pytest-html
+    - pytest-json
+    - pytest-jupyter
+    - pytest-localserver
+    - pytest-metadata
+    - pytest-mock
+    - pytest-mpi
+    - pytest-nunit
+    - pytest-ordering
+    - pytest-pep8
+    - pytest-pretty
+    - pytest-qt
+    - pytest-randomly
+    - pytest-remotedata
+    - pytest-replay
+    - pytest-rerunfailures
+    - pytest-shard
+    - pytest-socket
+    - pytest-subprocess
+    - pytest-timeout
+    - pytest-tornado
+    - pytest-tornasync
+    - pytest-trio
+    - pytest-variables
+    - pytest-xprocess
   source_files:
     - testing
     - src
