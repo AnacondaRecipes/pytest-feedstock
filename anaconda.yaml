@@ -2,3 +2,4 @@ anaconda_config_version: 1
 upstream_sources:
   - pypi:
       identifier: pytest
+      include_regex: ^6\.\d+\.\d+(?:[a-z][a-z0-9]*)?$
