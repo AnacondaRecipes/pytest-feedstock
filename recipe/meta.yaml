@@ -1,5 +1,5 @@
 {% set name = "pytest" %}
-{% set version = "9.0.3" %}
+{% set version = "9.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b86ada508af81d19edeb213c681b1d48246c1a91d304c6c81a427674c17eb91c
+  sha256: 1088fbde8f2b49d95a549a195707afa7a76a3ce9bcadc26b6d71f0ffda5fe313
 
 build:
   skip: true  # [py<310]
